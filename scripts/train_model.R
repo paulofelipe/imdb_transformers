@@ -7,16 +7,18 @@ source("scripts/prepare_input.R")
 source("scripts/model.R")
 
 max_len <- 256L
-batch_size <- 32L
+batch_size <- 16L
 
 # Load the data -------------------------------------------------------
 imdb_data <- read_csv("data/imdb_data.csv")
 
 train <- imdb_data %>%
-  filter(dataset == "train")
+  filter(dataset == "train") %>% 
+  sample_n(5000)
 
 test <- imdb_data %>%
-  filter(dataset == "test")
+  filter(dataset == "test") %>% 
+  sample_n(1000)
 
 # Prepare inputs and targets ---------------------------------------------
 x_train <- fast_encode(
