@@ -40,11 +40,11 @@ y_test <- test %>%
 
 train_ds <- tensor_slices_dataset(tensors = list(x_train, y_train)) %>% 
   dataset_shuffle(2048) %>% 
-  dataset_batch(16)
+  dataset_batch(32)
 
 test_ds <- tensor_slices_dataset(tensors = list(x_test, y_test)) %>% 
   dataset_shuffle(2048) %>% 
-  dataset_batch(16)
+  dataset_batch(32)
 
 # Model --------------------------------------------------------------------
 
