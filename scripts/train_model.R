@@ -41,11 +41,10 @@ y_test <- test %>%
 # TF datasets --------------------------------------------------------------
 
 train_ds <- tensor_slices_dataset(tensors = list(x_train, y_train)) %>% 
-  dataset_shuffle(2048) %>% 
+  dataset_repeat() %>% 
   dataset_batch(32)
 
 test_ds <- tensor_slices_dataset(tensors = list(x_test, y_test)) %>% 
-  dataset_shuffle(2048) %>% 
   dataset_batch(32)
 
 # Model --------------------------------------------------------------------
@@ -55,6 +54,7 @@ model$summary()
 
 train_history <- model$fit(
   train_ds,
+  steps_per_epoch = 156L,
   validation_data = test_ds,
   epochs = 3L
 )
