@@ -4,7 +4,7 @@ transformers <- import("transformers")
 tokenizers <- import("tokenizers")
 bert_wordpiece_tokenizer <- tokenizers$BertWordPieceTokenizer
 
-tokenizer <- transformers$BertTokenizer$from_pretrained("bert-base-cased")
+tokenizer <- transformers$AutoTokenizer$from_pretrained("distilbert-base-cased")
 
 if (!dir.exists("tokenizer")) {
   dir.create(path = "tokenizer")
