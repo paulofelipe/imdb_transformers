@@ -12,10 +12,7 @@ if (!dir.exists("tokenizer")) {
 
 tokenizer$save_pretrained("tokenizer/")
 
-fast_tokenizer <- bert_wordpiece_tokenizer(
-  "tokenizer/vocab.txt",
-  lowercase = FALSE
-)
+fast_tokenizer <- bert_wordpiece_tokenizer("tokenizer/vocab.txt", lowercase = FALSE)
 
 fast_encode <- function(texts, tokenizer = fast_tokenizer, max_len = 512L){
   
